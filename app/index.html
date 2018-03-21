@@ -17,6 +17,16 @@
     <button id="save-html">Save HTML</button>
   </section>
 
+  <section class="content">
+    <label for="markdown" hidden>Markdown Content</label>
+    <textarea class="raw-markdown" id="markdown"></textarea>
+    <div class="rendered-html" id="html"></div>
+  </section>
+
 </body>
+
+<script>
+  require('./renderer');
+</script>
 
 </html>
