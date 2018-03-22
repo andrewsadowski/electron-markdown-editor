@@ -1,6 +1,11 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, dialog } = require('electron');
 
 let mainWindow = null;
+
+const getFileFromUserSelection = () => {
+  const files = dialog.showOpenDialog();
+  console.log(files);
+};
 
 app.on('ready', () => {
   const mainWindow = new BrowserWindow({ show: false });
@@ -9,6 +14,7 @@ app.on('ready', () => {
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
+    getFileFromUserSelection();
   });
 
   mainWindow.on('closed', () => {
