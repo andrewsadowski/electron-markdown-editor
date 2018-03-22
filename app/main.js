@@ -3,7 +3,7 @@ const { app, BrowserWindow, dialog } = require('electron');
 let mainWindow = null;
 
 const getFileFromUserSelection = () => {
-  const files = dialog.showOpenDialog({
+  const files = dialog.showOpenDialog(mainWindow, {
     properties: ['openFile']
   });
 
