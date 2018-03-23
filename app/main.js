@@ -3,7 +3,7 @@ const fs = require('fs');
 
 let mainWindow = null;
 
-global.getFileFromUserSelection = () => {
+const getFileFromUserSelection = (exports.getFileFromUserSelection = () => {
   const files = dialog.showOpenDialog(mainWindow, {
     properties: ['openFile'],
     filters: [
@@ -18,7 +18,7 @@ global.getFileFromUserSelection = () => {
   const content = fs.readFileSync(file).toString();
 
   console.log(content);
-};
+});
 
 app.on('ready', () => {
   const mainWindow = new BrowserWindow({ show: false });
