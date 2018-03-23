@@ -3,7 +3,7 @@ const fs = require('fs');
 
 let mainWindow = null;
 
-const getFileFromUserSelection = () => {
+global.getFileFromUserSelection = () => {
   const files = dialog.showOpenDialog(mainWindow, {
     properties: ['openFile'],
     filters: [

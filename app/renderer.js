@@ -18,5 +18,5 @@ markdownView.addEventListener('keyup', event => {
 });
 
 openFileButton.addEventListener('click', () => {
-  alert('OPEN');
+  remote.getGlobal('getFileFromUserSelection')();
 });
