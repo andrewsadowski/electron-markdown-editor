@@ -27,7 +27,6 @@ app.on('ready', () => {
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
-    getFileFromUserSelection();
   });
 
   mainWindow.on('closed', () => {
