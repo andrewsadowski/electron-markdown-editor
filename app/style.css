@@ -1,5 +1,4 @@
-Skip to content This repository Search Pull requests Issues Marketplace Explore @andrewsadowski Sign out 1 4 11 stevekinney/fem-firesale Code Issues 0 Pull requests 0 Projects 0 Wiki Insights fem-firesale/app/style.css 1a20947 on Nov 12,
-2016 @stevekinney stevekinney Initial commit 91 lines (74 sloc) 1.32 KB html {
+html {
     box-sizing: border-box;
 }
 
@@ -100,6 +99,3 @@ button:disabled {
     background-color: rgba(170, 57, 57, 1);
     border-color: rgba(255, 170, 170, 1);
 }
-
-© 2018 GitHub,
-Inc. Terms Privacy Security Status Help Contact GitHub API Training Shop Blog About
