@@ -1,4 +1,5 @@
 const marked = require('marked');
+const { remote } = require('electron');
 
 const markdownView = document.querySelector('#markdown');
 const htmlView = document.querySelector('#html');
