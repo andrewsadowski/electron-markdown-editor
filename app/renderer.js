@@ -1,5 +1,5 @@
 const marked = require('marked');
-const { remote } = require('electron');
+const { remote, ipcRenderer } = require('electron');
 const mainProcess = remote.require('./main');
 
 const markdownView = document.querySelector('#markdown');
@@ -22,6 +22,9 @@ openFileButton.addEventListener('click', () => {
   mainProcess.getFileFromUserSelection();
 });
 
-saveMarkdownButton.addEventListener('click', () => {
-  
+ipcRenderer.on('file-opened', (event, file, content) => {
+  markdownView.value = content;
+  renderMarkdownToHtml(content);
 });
+
+saveMarkdownButton.addEventListener('click', () => {});
