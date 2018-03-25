@@ -15,12 +15,13 @@ const createWindow = () => {
   });
 
   newWindow.on('closed', () => {
+    windows.delete(newWindow);
     newWindow = null;
   });
 };
 
-const getFileFromUserSelection = (exports.getFileFromUserSelection = () => {
-  const files = dialog.showOpenDialog(mainWindow, {
+const getFileFromUserSelection = (exports.getFileFromUserSelection = targetWindow => {
+  const files = dialog.showOpenDialog(targetWindow, {
     properties: ['openFile'],
     filters: [
       { name: 'Text Files', extensions: ['txt', 'text'] },
@@ -33,12 +34,13 @@ const getFileFromUserSelection = (exports.getFileFromUserSelection = () => {
   return files[0];
 });
 
-const openFile = (exports.openFile = filePath => {
-  const file = filePath || getFileFromUserSelection();
+const openFile = (exports.openFile = (targetWindow, filePath) => {
+  const file = filePath || getFileFromUserSelection(targetWindow);
   const content = fs.readFileSync(file).toString();
-  mainWindow.webContents.send('file-opened', file, content);
+  targetWindow.webContents.send('file-opened', file, content);
 });
 
 app.on('ready', () => {
+  createWindow();
   require('devtron').install();
 });
