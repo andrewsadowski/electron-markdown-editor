@@ -5,7 +5,7 @@ let mainWindow = null;
 const windows = new Set();
 
 const createWindow = (exports.createWindow = () => {
-  const newWindow = new BrowserWindow({ show: false });
+  let newWindow = new BrowserWindow({ show: false });
   windows.add(newWindow);
 
   newWindow.loadURL(`file://${__dirname}/index.html`);
