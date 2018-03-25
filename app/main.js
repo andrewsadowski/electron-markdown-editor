@@ -2,6 +2,22 @@ const { app, BrowserWindow, dialog } = require('electron');
 const fs = require('fs');
 
 let mainWindow = null;
+const windows = new Set();
+
+const createWindow = () => {
+  const newWindow = new BrowserWindow({ show: false });
+  windows.add(newWindow);
+
+  newWindow.loadURL(`file://${__dirname}/index.html`);
+
+  newWindow.once('ready-to-show', () => {
+    newWindow.show();
+  });
+
+  newWindow.on('closed', () => {
+    newWindow = null;
+  });
+};
 
 const getFileFromUserSelection = (exports.getFileFromUserSelection = () => {
   const files = dialog.showOpenDialog(mainWindow, {
@@ -24,17 +40,5 @@ const openFile = (exports.openFile = filePath => {
 });
 
 app.on('ready', () => {
-  const mainWindow = new BrowserWindow({ show: false });
-
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show();
-  });
-
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
-
   require('devtron').install();
 });
