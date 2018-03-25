@@ -4,7 +4,7 @@ const fs = require('fs');
 let mainWindow = null;
 const windows = new Set();
 
-const createWindow = () => {
+const createWindow = (exports.createWindow = () => {
   const newWindow = new BrowserWindow({ show: false });
   windows.add(newWindow);
 
@@ -18,7 +18,7 @@ const createWindow = () => {
     windows.delete(newWindow);
     newWindow = null;
   });
-};
+});
 
 const getFileFromUserSelection = (exports.getFileFromUserSelection = targetWindow => {
   const files = dialog.showOpenDialog(targetWindow, {
