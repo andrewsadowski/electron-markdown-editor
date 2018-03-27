@@ -13,7 +13,7 @@ const createWindow = (exports.createWindow = () => {
   newWindow.once('ready-to-show', () => {
     newWindow.show();
   });
-
+  //On Close, if unsaved => open dialog box asking if you want to lose changes
   newWindow.on('close', event => {
     if (newWindow.isDocumentEdited()) {
       event.preventDefault();
