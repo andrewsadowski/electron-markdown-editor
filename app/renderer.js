@@ -1,5 +1,3 @@
-import { runInThisContext } from 'vm';
-
 const marked = require('marked');
 const { remote, ipcRenderer } = require('electron');
 const mainProcess = remote.require('./main');
